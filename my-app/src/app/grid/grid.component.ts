@@ -15,15 +15,15 @@ function* getDays(){
   styleUrl: './grid.component.css'
 })
 export class GridComponent {
-  days=[...getDays()]
-
+  days=[...getDays()]  
   @HostListener('click',["$event"])
   handlerDay(ev:Event){
-    const node = (ev.composedPath() as HTMLElement[])
-          .find(n=>n.dataset && 'day' in n.dataset)
+    ev.stopPropagation();
+    const node = (ev.   composedPath() as HTMLElement[])
+          .find(n=>n.dataset && 'index' in n.dataset)
     if(node){
-      const {day} = node.dataset;
-      console.log(day)
+      const {index} = node.dataset;
+      console.log(this.days[Number(index)])
     }
   }
 }

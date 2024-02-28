@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GridComponent } from './grid/grid.component';
+import { CounterComponent } from './counter/counter.component';
+import { TimerComponent } from './timer/timer.component';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,8 @@ import { GridComponent } from './grid/grid.component';
   imports: [
     RouterOutlet,
     GridComponent,    
+    CounterComponent,
+    TimerComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
