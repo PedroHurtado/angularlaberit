@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DayComponent } from '../day/day.component';
 
 function* getDays(){
@@ -17,7 +17,13 @@ function* getDays(){
 export class GridComponent {
   days=[...getDays()]
 
-  handlerDay(day:number){
-    console.log(day)
+  @HostListener('click',["$event"])
+  handlerDay(ev:Event){
+    const node = (ev.composedPath() as HTMLElement[])
+          .find(n=>n.dataset && 'day' in n.dataset)
+    if(node){
+      const {day} = node.dataset;
+      console.log(day)
+    }
   }
 }
