@@ -1,5 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { CreateService } from '../create.service';
+import { HttpClient } from '@angular/common/http';
+import { URL } from '../app.config';
+import { CreateUrl } from '../util';
 
 const PATH = '/customer'
 
@@ -10,7 +13,9 @@ interface Request{
 }
 
 const service = (path:string)=>{
-   return ()=>new CreateService<Request>()
+   return (http:HttpClient,url:URL)=>{      
+      return new CreateService<Request>(http, CreateUrl(url,path))
+   }
 }
 
 
@@ -21,7 +26,12 @@ const service = (path:string)=>{
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css',
   providers:[
-    {provide:CreateService<Request>, useFactory:service(PATH)}
+    {
+        provide:CreateService<Request>, 
+        useFactory:service(PATH),
+        deps:[HttpClient,URL]
+    },
+        
   ]
 })
 export class CustomerComponent {

@@ -1,0 +1,1 @@
+export const CreateUrl = (url:URL,path:string)=> `${url}${path}`

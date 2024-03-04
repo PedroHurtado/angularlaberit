@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+
 export class CreateService<T> {
-
-     create(entity:T){
-      console.log(entity)
-     }
+  constructor(private http: HttpClient,private url:string) {
+    console.log(this.url);
+  }
+  create(entity: T) {
+    //this.http.post<T>(this.url,entity);
+    console.log(entity)
+  }
 }
