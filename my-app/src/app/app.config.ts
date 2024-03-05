@@ -12,6 +12,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withFetch()
     ),
-    {provide:URL,useValue:"http://localhost:8081"}
+    {provide:URL,useValue:"http://localhost:3000"}
   ]
 };

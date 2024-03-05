@@ -1,0 +1,185 @@
+pizza={
+    id,
+    name,
+    descrition,
+    url
+    price->sum(ingredientes) * 1.20
+    ingredientes:[
+        {id,name,price}
+    ]
+}
+
+servidor:http://localhost:8080
+
+url
+    1. las urls deben de pluralizarse /pizzas
+    2. las urls no deben de poner acciones
+        /pizzas/add(no)
+        /pizzas/uptad(no)
+            POST,PUT,GET,DELETE
+    3. las urls no deben de declaraar formato
+        .json
+        .xml
+
+    content-type:'application/json'
+    accept:'application/json'
+
+CREATE
+
+url
+    /pizzas
+verbo
+    POST
+request
+    headers
+        content-type:'application/json'
+    body
+        {name,...etc}
+response
+    headers
+        content-type: 'application/json'
+    body
+        {resource}
+
+status code
+
+    ok              error
+    201             400 o 409
+                    401
+                    403->404
+                    500->
+
+400,409,500
+    body
+
+url
+    /pizzas/:id
+verbo
+    PUT|PATCH
+request
+    headers
+        content-type:'application/json'
+    body
+        {name,...etc}
+response
+    headers
+        content-type: 'application/json'
+    body
+        {resource}
+        empty
+
+status code
+
+    ok              error
+    200             400 o 409
+    204             401
+                    403->404
+                    500->
+                    404
+
+url
+    /pizzas/:id
+verbo
+    DELETE
+request
+    headers
+       
+    body
+       
+response
+    headers
+       
+    body       
+        empty
+
+status code
+
+    ok              error
+                    400 o 409
+    204             401
+                    403->404
+                    500->
+                    404
+
+url
+    /pizzas/:id
+verbo
+    GET
+request
+    headers
+       accept:'application/json'
+    body
+       
+response
+    headers
+       content-type:'application/json'
+    body       
+        {}
+
+status code
+
+    ok              error
+                    400 o 409
+    200             401
+                    403->404
+                    500->
+                    404
+
+url
+    /pizzas
+    ?name=car&page=1&size=25
+verbo
+    GET
+request
+    headers
+       accept:'application/json'
+    body
+       
+response
+    headers
+       content-type:'application/json'
+    body       
+        []
+
+status code
+
+    ok              error
+                    400 o 409
+    200             401
+                    403->404
+                    500->
+                    
+attr=id,name,price,
+
+https://www.odata.org/
+https://olingo.apache.org/
+https://graphql.org/
+
+¿Imaginemos que tengo que enviar un el dni en un get?
+
+/person/52803357A
+
+x-dni:52803357A
+/person
+
+¿Quien ha utilizado token para autenticarse?
+
+    cookie
+            httponly
+    token
+        localstorage
+                1. Código sincrono de acceso(bloqueante)
+                2. Serializacion a cadena y deserializacion
+
+                        JSON.stringify
+                        JSON.parse
+                3. No puedo acceder desde los workers
+        INDEXDB
+
+                1. Código asincrono
+                2. Guardo objetos
+                3. Puedo acceder desde los workers
+
+        https://github.com/jakearchibald/idb-keyval
+
+https://www.w3.org/TR/CSP3/

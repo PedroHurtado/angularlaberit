@@ -3,19 +3,20 @@ import { CreateService } from '../create.service';
 import { HttpClient } from '@angular/common/http';
 import { URL } from '../app.config';
 import { CreateUrl } from '../util';
+import { Spinner } from '../spinner';
 
 const PATH = '/customer'
 
-interface Request{
-  id:number,
-  name:string,
-  phone:string
+interface Request {
+  id: number,
+  name: string,
+  phone: string
 }
 
-const service = (path:string)=>{
-   return (http:HttpClient,url:URL)=>{      
-      return new CreateService<Request>(http, CreateUrl(url,path))
-   }
+const service = (path: string) => {
+  return (http: HttpClient, url: URL) => {
+    return new CreateService<Request>(http, CreateUrl(url, path))
+  }
 }
 
 
@@ -25,17 +26,24 @@ const service = (path:string)=>{
   imports: [],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css',
-  providers:[
+  providers: [
     {
-        provide:CreateService<Request>, 
-        useFactory:service(PATH),
-        deps:[HttpClient,URL]
+      provide: CreateService<Request>,
+      useFactory: service(PATH),
+      deps: [HttpClient, URL]
     },
-        
+
   ]
 })
 export class CustomerComponent {
-  constructor(private service:CreateService<Request> ){
-    this.service.create({id:1,name:"pedro hurtado", phone:"666789999"})
+  constructor(private service: CreateService<Request>) {
+
+
+    //await this.service.create({})
+  }
+
+  @Spinner()
+  private async create() {   
+    const result = await this.service.create({ id: 1, name: "pedro hurtado", phone: "666789999" })   
   }
 }
