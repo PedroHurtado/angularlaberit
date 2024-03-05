@@ -37,7 +37,7 @@ const service = (path: string) => {
 })
 export class CustomerComponent {
   constructor(private service: CreateService<Request>) {
-
+    this.create();
 
     //await this.service.create({})
   }

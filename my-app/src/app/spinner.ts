@@ -1,16 +1,15 @@
 export function Spinner() {
     return  (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
        const oldFunction:Function = descriptor.value as Function;
-       descriptor.value = async (...args:[])=>{
-          const $this:Function= this;
+       descriptor.value = async (...args:[])=>{          
           try{
-            return await oldFunction.apply($this,args)
+            return await oldFunction.apply(this,args)
           }
           catch{
-                //todo
+                console.log("error")
           }
           finally{
-            //todo
+                console.log("finally")
           }
        }
     };
