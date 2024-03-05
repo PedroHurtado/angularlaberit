@@ -3,7 +3,7 @@ export function Spinner() {
        const oldFunction:Function = descriptor.value as Function;
        descriptor.value = async (...args:[])=>{          
           try{
-            return await oldFunction.apply(this,args)
+            return await oldFunction.apply(target,args)
           }
           catch{
                 console.log("error")

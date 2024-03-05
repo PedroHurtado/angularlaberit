@@ -6,6 +6,7 @@ import { TimerComponent } from './timer/timer.component';
 import { AComponent } from './a/a.component';
 import { BComponent } from './b/b.component';
 import { CustomerComponent } from './customer/customer.component';
+import { LayoutComponent } from './pages/layout/layout.component';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,8 @@ import { CustomerComponent } from './customer/customer.component';
     TimerComponent,
     AComponent,
     BComponent,
-    CustomerComponent
-    
+    CustomerComponent,
+    LayoutComponent    
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
