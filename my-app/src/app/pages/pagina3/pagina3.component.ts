@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pagina3',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './pagina3.component.css'
 })
 export class Pagina3Component {
-
+  constructor(route:ActivatedRoute){
+    console.log(route.snapshot.queryParams)
+  }
 }
