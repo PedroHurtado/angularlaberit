@@ -7,19 +7,20 @@ import { AComponent } from './a/a.component';
 import { BComponent } from './b/b.component';
 import { CustomerComponent } from './customer/customer.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { ProfileComponent } from './forms/profile/profile.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    GridComponent,    
+    GridComponent,
     CounterComponent,
     TimerComponent,
     AComponent,
     BComponent,
     CustomerComponent,
-    LayoutComponent    
+    LayoutComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

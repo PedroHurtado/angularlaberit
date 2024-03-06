@@ -1,0 +1,13 @@
+<form [formGroup]="profileForm" (submit)="handlerSubmit()">
+  <div class="control">
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName">
+  </div>
+
+  <div class="control">
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName">
+  </div>
+
+  <button type="submit">Enviar</button>
+</form>
