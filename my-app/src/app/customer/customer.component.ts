@@ -5,6 +5,11 @@ import { URL } from '../app.config';
 import { CreateUrl } from '../util';
 import { Spinner } from '../spinner';
 
+export interface ISpinner{
+  on():void;
+  off():void;
+}
+
 const PATH = '/customer'
 
 interface Request {
@@ -35,15 +40,22 @@ const service = (path: string) => {
 
   ]
 })
-export class CustomerComponent {
+export class CustomerComponent implements ISpinner {
   constructor(private service: CreateService<Request>) {
     this.create();
 
     //await this.service.create({})
   }
+  on(): void {
+    console.log("on");
+  }
+  off(): void {
+    console.log("off")
+  }
+
 
   @Spinner()
-  private async create() {   
-    const result = await this.service.create({ id: 1, name: "pedro hurtado", phone: "666789999" })   
+  private async create() {
+    const result = await this.service.create({ id: 1, name: "pedro hurtado", phone: "666789999" })
   }
 }
